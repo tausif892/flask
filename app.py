@@ -57,6 +57,14 @@ def create_table():
 # Create table when the script runs
 create_table()
 
+# Add access control headers to the response
+@app.after_request
+def add_access_control_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = 'https://myapp-20051.vercel.app'  # Allow specific origin
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'  # Allowed methods
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'  # Allowed headers
+    return response
+
 # Login route
 @app.route('/', methods=['GET', 'POST'])
 def index():
