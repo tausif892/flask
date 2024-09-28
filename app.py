@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 import sqlite3
 
-app = Flask(__main__)
+app = Flask(__name__)
 
 # Function to establish a database connection
 def db_connection():
@@ -73,7 +73,7 @@ def index():
         # Check if user exists with the provided username and password
         cursor.execute("SELECT * FROM users WHERE username=? AND password=?", (username, password))
         user = cursor.fetchone()
-        id=user[0];
+        id=user[0]
         print(user)
         
         
